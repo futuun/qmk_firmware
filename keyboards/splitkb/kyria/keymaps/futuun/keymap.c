@@ -20,14 +20,16 @@ enum layers {
     _NAV,
     _SYM,
     _FUNCTION,
+    _MOUSE,
 };
 
 
 // Aliases for readability
 #define DH       TO(_COLEMAK_DH)
 #define NAV      TO(_NAV)
-#define SYM      TO(_SYM)
+#define SYM      OSL(_SYM)
 #define FKEYS    TO(_FUNCTION)
+#define MOUSE    TO(_MOUSE)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
@@ -43,26 +45,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK_DH] = LAYOUT(
      _______, KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                         KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, _______,
      _______, KC_A ,  KC_R   ,  KC_S  ,   KC_T ,   KC_G ,                                         KC_M,   KC_N ,  KC_E ,   KC_I ,  KC_O , _______,
-     _______, KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , _______, _______, _______, _______,     KC_K,   KC_H ,KC_COMM, KC_DOT ,KC_SLSH, _______,
-                               _______, KC_RGUI, ALT_ENT, KC_SPC ,  KC_TAB,  KC_DEL, KC_BSPC,      SYM, KC_RSFT, _______
+     _______, KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V ,  KC_ESC, _______, _______,    NAV ,     KC_K,   KC_H ,KC_COMM, KC_DOT ,KC_SLSH, _______,
+                                 FKEYS,    SYM , ALT_ENT, KC_SPC ,  KC_TAB,  KC_DEL, KC_BSPC,  KC_RGUI, KC_RSFT, MOUSE
     ),
     [_SYM] = LAYOUT(
      _______,   KC_AT, KC_HASH, KC_PERC, KC_BSLS, KC_EXLM,                                     KC_ASTR,   KC_7,   KC_8,   KC_9, KC_PLUS, _______,
      _______, KC_QUOT, KC_LPRN, KC_LCBR, KC_LBRC,  KC_GRV,                                      KC_EQL,   KC_4,   KC_5,   KC_6,    KC_0, _______,
      _______, KC_DQUO, KC_RPRN, KC_RCBR, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_SLSH,   KC_1,   KC_2,   KC_3, KC_MINS, _______,
-                                _______, KC_UNDS, KC_PIPE, CTL_ESC,     NAV,   FKEYS, _______,      DH, KC_DLR, _______
+                                  MOUSE, KC_UNDS, KC_PIPE,KC_CIRCUMFLEX,NAV,   FKEYS, _______,      DH, KC_DLR,  MOUSE
     ),
     [_FUNCTION] = LAYOUT(
-     _______, KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     RGB_SPI, RGB_SPD, _______, _______, _______, _______,
-     _______, KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 , _______,                                     RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, _______,
-     _______, KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , _______, _______, _______, _______, _______, RGB_M_P, RGB_SAD, RGB_HUD, RGB_VAD,RGB_RMOD, _______,
-                               _______,      DH,     SYM,     NAV, _______, _______,     NAV,     SYM,      DH, _______
+     _______, KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     _______, _______,   KC_UP, _______, _______, _______,
+     _______, KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 ,  KC_ESC,                                     _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+     _______, KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                    DH, _______, _______, _______, _______, _______, _______, _______, _______,   MOUSE
    ),
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, _______,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, _______,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, _______,
-                                 _______,      DH,     SYM,   FKEYS, _______, _______,   FKEYS,     SYM,      DH, _______
+    _______, RGB_SPI, RGB_SPD, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, _______,
+    _______, RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, _______,
+    _______, RGB_M_P, RGB_SAD, RGB_HUD, RGB_VAD,RGB_RMOD, _______, _______, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, _______,
+                                 MOUSE,      DH,     SYM,   FKEYS, _______, _______,   FKEYS,     SYM,      DH,    MOUSE
+    ),
+    [_MOUSE] = LAYOUT(
+      _______, _______, _______, KC_ACL2, KC_ACL1, KC_ACL0,                                     _______, _______, KC_MS_U, _______, _______, _______,
+      _______,  KC_A  , _______,  KC_S  , KC_BTN1, KC_BTN2,                                     KC_WH_U, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,
+      _______,  KC_Z  ,   KC_X ,  KC_C  ,   KC_D ,    KC_V, _______, _______, _______, _______, KC_WH_D, KC_WH_L, KC_WH_R, _______, _______, _______,
+                                      DH, KC_RGUI, KC_LALT, KC_RCTL, _______, _______, _______,     SYM, KC_RSFT,      DH
     ),
 };
 
@@ -71,6 +79,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         // case _COLEMAK_DH:
         //     SEND_STRING(SS_TAP(X_F13));
         //     break;
+        case _MOUSE:
+            SEND_STRING(SS_TAP(X_F15));
+            break;
         case _SYM:
             SEND_STRING(SS_TAP(X_F16));
             break;
