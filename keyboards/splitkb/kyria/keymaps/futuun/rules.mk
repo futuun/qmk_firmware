@@ -1,3 +1,15 @@
-ENCODER_ENABLE = yes       # Enables the use of one or more encoders
-RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
-MOUSEKEY_ENABLE = yes      # Enable mousekeys
+MCU = RP2040
+BOOTLOADER = rp2040
+BOARD = GENERIC_PROMICRO_RP2040
+WS2812_DRIVER = vendor
+SERIAL_DRIVER = vendor
+ENCODER_MAP_ENABLE = yes
+RGBLIGHT_ENABLE = yes
+
+MOUSEKEY_ENABLE = yes
+
+POINTING_DEVICE_ENABLE = yes
+POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+
+# HAPTIC_ENABLE = yes
+# HAPTIC_DRIVER += DRV2605L
