@@ -1,21 +1,4 @@
-/* Copyright 2019 Thomas Baart <thomas@splitkb.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #pragma once
-
 #undef MATRIX_ROW_PINS
 #undef MATRIX_ROW_PINS_RIGHT
 #undef MATRIX_COL_PINS
@@ -38,38 +21,32 @@
 #define SERIAL_USART_TX_PIN GP1
 #define RGB_DI_PIN GP0
 #define SPLIT_HAND_MATRIX_GRID GP7, GP20
-#define BATTERY_LEVEL_PIN GP13
-
-#define LAYER_STATE_8BIT
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
-#define IGNORE_MOD_TAP_INTERRUPT
-
-#undef LOCKING_SUPPORT_ENABLE
-#undef LOCKING_RESYNC_ENABLE
-
-#ifdef RGBLIGHT_ENABLE
-#    define RGBLIGHT_EFFECT_BREATHING
-#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    define RGBLIGHT_EFFECT_SNAKE
-#    define RGBLIGHT_EFFECT_KNIGHT
-#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
-
-#    define RGBLIGHT_HUE_STEP 8
-#    define RGBLIGHT_SAT_STEP 8
-#    define RGBLIGHT_VAL_STEP 8
-#    define RGBLIGHT_LIMIT_VAL 150
-#endif
-
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U // Timeout window in ms in which the double tap can occur.
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED_MASK 0U // Specify a optional status led which
-
+// #define SPLIT_POINTING_ENABLE
+// #define POINTING_DEVICE_LEFT
+// #define CIRQUE_PINNACLE_CURVED_OVERLAY
 #define CIRQUE_PINNACLE_DIAMETER_MM 35
 #define CIRQUE_PINNACLE_TAP_ENABLE
 #define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
 #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+
+#define BATTERY_LEVEL_PIN GP13
+
+#define BLUEFRUIT_LE_RST_PIN GP14
+#define BLUEFRUIT_LE_CS_PIN  GP15
+#define BLUEFRUIT_LE_IRQ_PIN GP16
+
+
 #define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE // Enable cursor glide
 #define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 #define POINTING_DEVICE_ROTATION_270
-
+// #define CRC8_USE_TABLE
+// #define CRC8_OPTIMIZE_SPEED
+#ifdef RGBLIGHT_ENABLE
+    #define RGBLIGHT_ANIMATIONS
+    #define RGBLIGHT_SLEEP
+    #define RGBLIGHT_HUE_STEP 5
+    #define RGBLIGHT_SAT_STEP 5
+#endif

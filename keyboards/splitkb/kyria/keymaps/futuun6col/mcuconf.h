@@ -1,0 +1,33 @@
+#pragma once
+
+#include_next <mcuconf.h>
+
+#undef RP_I2C_USE_I2C1
+#define RP_I2C_USE_I2C1 TRUE
+// #undef STM32_I2C_USE_I2C2
+// #define STM32_I2C_USE_I2C2 TRUE
+
+#define STM32_ADC_USE_ADC1 TRUE
+// #define ADC_CFGR_CONT 3
+#define ADC_COUNT 3
+#define ADC_RESOLUTION 12
+// #define ADC_TRIG_SOFTWARE 0
+// #define ADC_TRIG_EXT_TIM1_TRGO 1
+// #define ADC_TRIG_EXT_TIM1_CC4 2
+// #define ADC_TRIG_EXT_TIM2_TRGO 3
+// #define ADC_TRIG_EXT_TIM2_CC1 4
+// #define ADC_TRIG_EXT_TIM3_CC4 5
+// #define ADC_TRIG_EXT_TIM4_TRGO 6
+// #define ADC_TRIG_EXT_TIM4_CC4 7
+// #define ADC_TRIG_EXT_TIM5_TRGO 8
+// #define ADC_TRIG_EXT_TIM5_CC4 9
+// #define ADC_TRIG_EXT_TIM8_CC4 10
+// #define ADC_TRIG_EXT_TIM8_TRGO 11
+// #define ADC_TRIG_EXT_TIM8_TRGO2 12
+// #define ADC_TRIG_EXT_TIM3_CC3 13
+// #define ADC_TRIG_EXT_TIM1_CC3 14
+// #define ADC_TRIG_EXT_TIM2_CC3 15
+// #define ADC_TRIG_EXT_TIM3_TRGO 16
+// #define ADC_TRIG_EXT_TIM3_CC1 17
+// #define ADC_TRIG_EXT_TIM1_CC1 18
+
